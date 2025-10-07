@@ -28,12 +28,6 @@ async def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_
     return users
 
 
-@user_router.get("/api/users/", response_model=list[UserResponse])
-async def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    users = UserCRUD.get_users(db, skip=skip, limit=limit)
-    return users
-
-
 @user_router.get("/api/users/{user_id}", response_model=UserResponse)
 async def read_user(user_id: int, db: Session = Depends(get_db)):
     db_user = db.query(User).filter(User.id == user_id).first()

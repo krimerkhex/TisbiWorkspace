@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse, HttpRequest
+
 from .forms import UserRegistrationForm
-from .models import User
+from .services import UserCRUD
 
 
 def register_page(request):
